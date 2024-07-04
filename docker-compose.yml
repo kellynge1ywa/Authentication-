@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  authdb:
+    container_name: authdb
+    image: mysql:latest
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'authdata'
+      # So you don't have to use root, but you can if you like
+      MYSQL_USER: 'kelly'
+      # You can use whatever password you like
+      MYSQL_PASSWORD: 'kellymysql2'
+      # Password for root access
+      MYSQL_ROOT_PASSWORD: 'kellymysql2'
+    ports:
+      # <Port exposed> : <MySQL Port running inside container>
+      - '3309:3306'
+    expose:
+      # Opens port 3306 on the container
+      - '3309'
+      # Where our data will be persisted
+    volumes:
+      - authdb:/var/lib/mysql
+# Names our volume
+
+
+volumes:
+  authdb:
+
+
+    
+  
+      
